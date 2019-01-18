@@ -27,6 +27,7 @@ urlpatterns = [
     # photos URLs
     re_path('^$', photos_views.home, name='photos_home'),
     re_path(r'^photos/(?P<pk>[0-9]+)$', photos_views.detail, name='photo_detail'),
+    re_path(r'^photos/new$', photos_views.create, name='create_photo'),
 
     # Users URLs
     re_path(r'^login$', users_views.login, name='users_login'),

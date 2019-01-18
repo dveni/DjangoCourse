@@ -122,5 +122,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#LOGIN URL
 
+LOGIN_URL = '/login'
+
+# BADWORDS http://goo.gl/G2nCu7
+
+BADWORDS = ['Abollao', 'Abrazafarolas', 'Afilasables']
 

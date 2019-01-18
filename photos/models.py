@@ -3,16 +3,8 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from photos.settings import LICENSES
 
-COPYRIGHT = 'RIG'
-COPYLEFT = 'LEF'
-CREATIVE_COMMONS = 'CC'
-
-LICENSES = (
-    (COPYRIGHT, 'Copyright'),
-    (COPYLEFT, 'Copyleft'),
-    (CREATIVE_COMMONS, 'Creative Commons')
-)
 
 PUBLIC = 'PUB'
 PRIVATE = 'PRIV'
