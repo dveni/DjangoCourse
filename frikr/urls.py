@@ -16,20 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-
-from photos import views as photos_views
-from users import  views as users_views
+from photos.views import HomeView, DetailView, CreateView
+from users.views import LoginView, LogoutView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # photos URLs
-    re_path('^$', photos_views.home, name='photos_home'),
-    re_path(r'^photos/(?P<pk>[0-9]+)$', photos_views.detail, name='photo_detail'),
-    re_path(r'^photos/new$', photos_views.create, name='create_photo'),
+    re_path('^$', HomeView.as_view(), name='photos_home'),
+    re_path(r'^photos/(?P<pk>[0-9]+)$', DetailView.as_view(), name='photo_detail'),
+    re_path(r'^photos/new$', CreateView.as_view(), name='create_photo'),
 
     # Users URLs
-    re_path(r'^login$', users_views.login, name='users_login'),
-    re_path(r'^logout$', users_views.logout, name='users_logout')
+    re_path(r'^login$', LoginView.as_view(), name='users_login'),
+    re_path(r'^logout$', LogoutView.as_view(), name='users_logout')
 ]

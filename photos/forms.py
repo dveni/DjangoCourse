@@ -14,7 +14,7 @@ class PhotoForm(forms.ModelForm):
         exclude = ['owner']
     def clean(self):
         """
-        Validate if in description there's badwords defined in settings.BADWORDS
+        Validate if in description there's no badwords defined in settings.BADWORDS
         :return: dictionary with attributes if OK
         """
 
