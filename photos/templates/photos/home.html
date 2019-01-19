@@ -4,11 +4,7 @@
     <p> As Flickr, but geeky :P</p>
     {% if photos_list|length > 0%}
         <h2>Last pics</h2>
-        {% for photo in photos_list %}
-            <a href="{% url 'photo_detail' photo.pk %}">
-                <img src="{{ photo.url }}" alt="{{ photo.name }}" height="150">
-            </a>
-        {% endfor %}
+        {% include 'photos/photos_loop.html' %}
     {% else %}
         Be the first in posting your pic!
     {% endif %}

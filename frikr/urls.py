@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.urls import path, re_path
 
-from photos.views import HomeView, DetailView, CreateView
+from photos.views import HomeView, DetailView, CreateView, PhotoListView, UserPhotosView
 from users.views import LoginView, LogoutView
 
 
@@ -25,6 +26,8 @@ urlpatterns = [
 
     # photos URLs
     re_path('^$', HomeView.as_view(), name='photos_home'),
+    re_path('^my-photos/$', login_required(UserPhotosView.as_view()), name='user_photos'),
+    re_path('^photos/$', PhotoListView.as_view(), name='photos_list'),
     re_path(r'^photos/(?P<pk>[0-9]+)$', DetailView.as_view(), name='photo_detail'),
     re_path(r'^photos/new$', CreateView.as_view(), name='create_photo'),
 
