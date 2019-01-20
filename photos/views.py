@@ -112,7 +112,6 @@ class PhotoListView(View, PhotosQueryset):
         }
         return render(request, 'photos/photos_list.html', context)
 
-
 class UserPhotosView(ListView):
     model = Photo
     template_name = 'photos/user_photos.html'
