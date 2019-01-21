@@ -18,6 +18,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path, re_path
 
 from photos.views import HomeView, DetailView, CreateView, PhotoListView, UserPhotosView
+from users.api import UserListAPI, UserDetailAPI
 from users.views import LoginView, LogoutView
 
 
@@ -33,5 +34,10 @@ urlpatterns = [
 
     # Users URLs
     re_path(r'^login$', LoginView.as_view(), name='users_login'),
-    re_path(r'^logout$', LogoutView.as_view(), name='users_logout')
+    re_path(r'^logout$', LogoutView.as_view(), name='users_logout'),
+
+    # Users API URLs
+    re_path(r'^api/1.0/users/$', UserListAPI.as_view(), name='user_list_api'),
+    re_path(r'^api/1.0/users/(?P<pk>[0-9]+)$', UserDetailAPI.as_view(), name='user_detail_api'),
+
 ]
