@@ -70,7 +70,7 @@ class CreateView(View):
         return render(request, 'photos/new_photo.html', context)
 
     @method_decorator(login_required())
-    def create(request):
+    def post(self, request):
         """
         Creates pic if POST
         :param request: HttpRequest

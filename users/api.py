@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -13,11 +14,14 @@ from users.serializers import UserSerializer
 class UserListAPI(APIView):
 
     def get(self, request):
+        paginator = PageNumberPagination()
         users = User.objects.all()
+
+        paginator.paginate_queryset(users,request)
         serializer = UserSerializer(users, many=True)
         serialized_users = serializer.data #dictionaries list
 
-        return Response(serialized_users)
+        return paginator.get_paginated_response(serialized_users)
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)

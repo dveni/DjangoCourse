@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 
 from photos.models import Photo
 from photos.settings import BADWORDS
+from photos.validators import badwords_detector
 
 
 class PhotoForm(forms.ModelForm):
@@ -12,18 +13,4 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
         exclude = ['owner']
-    def clean(self):
-        """
-        Validate if in description there's no badwords defined in settings.BADWORDS
-        :return: dictionary with attributes if OK
-        """
 
-        cleaned_data = super(PhotoForm, self).clean()
-
-        description = cleaned_data.get('description','').lower()
-
-        for badword in BADWORDS:
-            if badword.lower() in description:
-                raise ValidationError('The word {0} is not allowed'.format(badword))
-
-        return cleaned_data

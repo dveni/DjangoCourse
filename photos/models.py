@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 from photos.settings import LICENSES
-
+from photos.validators import badwords_detector
 
 PUBLIC = 'PUB'
 PRIVATE = 'PRIV'
@@ -19,7 +19,7 @@ class Photo(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
     url = models.URLField()
-    description = models.TextField(blank=True, default="")
+    description = models.TextField(blank=True, default="", validators=[badwords_detector])
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     license = models.CharField(max_length=3, choices=LICENSES)
