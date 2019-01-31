@@ -10,7 +10,7 @@ def badwords_detector(value):
     """
 
     for badword in BADWORDS:
-        if badword.lower() or badword in value:
+        if (badword.lower() or badword) in value:
             raise ValidationError('The word {0} is not allowed'.format(badword))
 
     return True

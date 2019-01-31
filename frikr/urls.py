@@ -14,35 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
-from django.urls import path, re_path
-
-from photos.api import PhotoListAPI, PhotoDetailAPI
-from photos.views import HomeView, DetailView, CreateView, PhotoListView, UserPhotosView
-from users.api import UserListAPI, UserDetailAPI
-from users.views import LoginView, LogoutView
-
-
+from django.urls import path, re_path, include
+from users import urls as users_urls, api_urls as users_api_urls
+from photos import urls as photos_urls, api_urls as photos_api_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # photos URLs
-    re_path('^$', HomeView.as_view(), name='photos_home'),
-    re_path('^my-photos/$', login_required(UserPhotosView.as_view()), name='user_photos'),
-    re_path('^photos/$', PhotoListView.as_view(), name='photos_list'),
-    re_path(r'^photos/(?P<pk>[0-9]+)$', DetailView.as_view(), name='photo_detail'),
-    re_path(r'^photos/new$', CreateView.as_view(), name='create_photo'),
-
-    # Photos API URLs
-    re_path(r'^api/1.0/photos/$', PhotoListAPI.as_view(), name='photo_list_api'),
-    re_path(r'^api/1.0/photos/(?P<pk>[0-9]+)$', PhotoDetailAPI.as_view(), name='photo_detail_api'),
-
     # Users URLs
-    re_path(r'^login$', LoginView.as_view(), name='users_login'),
-    re_path(r'^logout$', LogoutView.as_view(), name='users_logout'),
+    re_path(r'',include(users_urls)),
+    re_path(r'',include(users_api_urls)),
+    #Photos URLs
+    re_path(r'', include(photos_urls)),
+    re_path(r'', include(photos_api_urls))
 
-    # Users API URLs
-    re_path(r'^api/1.0/users/$', UserListAPI.as_view(), name='user_list_api'),
-    re_path(r'^api/1.0/users/(?P<pk>[0-9]+)$', UserDetailAPI.as_view(), name='user_detail_api'),
 
 ]
