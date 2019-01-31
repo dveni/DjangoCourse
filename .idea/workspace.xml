@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e78ae912-8f98-480d-b7c9-f93e337e1a20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/photos/api_urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/photos/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/api_urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frikr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/frikr/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/photos/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/photos/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/photos/validators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/api.py" afterDir="false" />
-    </list>
+    <list default="true" id="e78ae912-8f98-480d-b7c9-f93e337e1a20" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

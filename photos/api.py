@@ -1,3 +1,4 @@
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
@@ -11,6 +12,9 @@ class PhotoViewSet(PhotosQueryset, ModelViewSet):
 
     queryset = Photo.objects.all()
     permission_classes = (IsAuthenticatedOrReadOnly,)
+    filter_backends = (SearchFilter, OrderingFilter)
+    search_fields = ('name', 'description', 'owner__first_name')
+    ordering_fields = ('name', 'owner')
 
     def get_queryset(self):
         return self.get_photos_queryset(self.request)
